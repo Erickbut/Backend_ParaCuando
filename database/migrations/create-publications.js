@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING,
         references: {
           model: 'Votes',
-          key: 'id'
+          key: 'votes_id'
         }
       },
       tittle:{
