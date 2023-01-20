@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Publications', {
-      id: {
+      publication_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -28,7 +28,19 @@ module.exports = {
       },
       city_id: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        references: {
+          model: 'Cities',
+          key: 'id'
+        }
+      },
+      votes_id: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        references: {
+          model: 'Votes',
+          key: 'id'
+        }
       },
       tittle:{
         allowNull: false,

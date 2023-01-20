@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       State.hasOne(models.MODELNAME4, {as: 'countries', foreignKey: 'country_id'})
+      State.hasMany(models.MODELNAME3, {as: 'Cities', foreignKey: 'state_id'})
 
     }
   }

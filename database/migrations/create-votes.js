@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Votes', {
-      id: {
+      votes_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -18,6 +18,29 @@ module.exports = {
         references: {
           model: 'Countries',
           key: 'id'
+        },
+      },
+      publication_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        foreingKey: true,
+        references: {
+          model: 'Publications',
+          key: 'id'
+        },
+        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID ,
+      },
+      profile_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+        references: {
+          model: 'Profiles',
+          key: 'profile_id'
         },
       },
       name_country: {

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Profiles', {
-      id: {
+      profile_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -17,19 +17,40 @@ module.exports = {
         foreignKey: true,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'user_id'
         },
         type: Sequelize.UUID 
       },
       role_id: {
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.BIGINT
+        type: Sequelize.BIGINT,
+        primaryKey: true,
+        foreignKey: true,
+        references: {
+          model: 'Roles',
+          key: 'role_id'
+        },
       },
       country_id: {
+        primaryKey: true,
+        foreignKey: true,
+        references: {
+          model: 'Countries',
+          key: 'country_id'
+        },
         allowNull: false,
         autoIncrement: true,
         type: Sequelize.BIGINT
+      },
+      publication_id : {
+        allowNull: false,
+        autoIncrement: true,
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'Publications',
+          key: 'publication_id'
+        }
       },
       image_url : {
         allowNull: false,

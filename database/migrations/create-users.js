@@ -10,7 +10,7 @@ module.exports = {
     }
     try {
       await queryInterface.createTable('users', {
-        id: { // usando UUID
+        user_id: { // usando UUID
           type: Sequelize.UUID,
           allowNull: false,
           defaultValue: Sequelize.UUIDV4,
@@ -22,7 +22,18 @@ module.exports = {
           onDelete: 'RESTRICT',
           onUpdate: 'CASCADE'
         },
-
+        profile_id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          foreingKey:true,
+          references:{
+            model: 'Profiles',
+            key: 'profile_id'
+          },
+          defaultValue: Sequelize.UUIDV4,
+          type: Sequelize.UUID 
+        },
         first_name: {
           allowNull: false,
           type: Sequelize.STRING

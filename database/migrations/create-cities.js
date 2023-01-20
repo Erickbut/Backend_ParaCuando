@@ -19,6 +19,15 @@ module.exports = {
         },
         type: Sequelize.INTEGER      
       },
+      publication_id:{
+        allowNull: false,
+        autoIncrement: true,
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'Publications',
+          key: 'id'
+        }
+      },
       name_city: {
         allowNull: false,
         type: Sequelize.STRING

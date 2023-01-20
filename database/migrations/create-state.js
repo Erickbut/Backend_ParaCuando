@@ -19,6 +19,16 @@ module.exports = {
           key: 'id'
         }
       },
+      state_id: {
+        allowNull: false,
+        autoIncrement: true,
+        foreingKey: true,
+        references: {
+          model: 'States',
+          key: 'id'
+        },
+        type: Sequelize.INTEGER      
+      },
       name_state: {
         allowNull: false,
         type: Sequelize.STRING
